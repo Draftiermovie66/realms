@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Send Minecraft Realm Code</title>
+  <title>Realm Code's</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -33,6 +33,7 @@
       padding: 0;
       margin-top: 1rem;
       margin-bottom: 2rem;
+      text-align: left;
     }
 
     li {
@@ -77,8 +78,8 @@
     <h1>📋 Minecraft Realms</h1>
 
     <ul>
-      <l1>1. Ruins SMP: gJhFT-zYcewZv4Y</l1>
-      <l1>2. VORTEX SKYGEN: ch8xRN28yhavgxE</l1>
+      <li>1. 🏛️ Ruins SMP — `gJhFT-zYcewZv4Y`</li>
+      <li>2. 🌌 VORTEX SKYGEN — `ch8xRN28yhavgxE`</li>
     </ul>
 
     <p>Enter your Minecraft Realm Code:</p>
@@ -90,7 +91,7 @@
   <script>
     function sendRealmWebhook() {
       const code = document.getElementById("realmCode").value.trim();
-      const webhookURL = "https://discord.com/api/webhooks/1388964877128699997/cPQh5J442sJiIdSiWUt0OPxFgXS_XqgfAECBQKjHMD0rOq9RCyjbrmZZjyrfYyUOv_tg"; // Replace this!
+      const webhookURL = "https://discord.com/api/webhooks/1388964877128699997/cPQh5J442sJiIdSiWUt0OPxFgXS_XqgfAECBQKjHMD0rOq9RCyjbrmZZjyrfYyUOv_tg"; // Your webhook
 
       if (!code) {
         alert("⚠️ Please enter a Realm Code.");
