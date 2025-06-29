@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Send Minecraft Realm Code</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #2c2f33;
+      color: #ffffff;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      color: #ffffff;
+    }
+
+    .container {
+      background: #23272a;
+      padding: 2rem;
+      border-radius: 12px;
+      display: inline-block;
+      margin-top: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    li {
+      padding: 0.75rem;
+      border-bottom: 1px solid #444;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+
+    input[type="text"] {
+      padding: 0.8rem;
+      width: 90%;
+      max-width: 300px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      margin: 1rem 0;
+      outline: none;
+    }
+
+    button {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      background-color: #7289da;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #5b6eae;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>📋 Minecraft Realms</h1>
+
+    <ul>
+      <l1>1. Ruins SMP: gJhFT-zYcewZv4Y</l1>
+      <l1>2. VORTEX SKYGEN: ch8xRN28yhavgxE</l1>
+    </ul>
+
+    <p>Enter your Minecraft Realm Code:</p>
+    <input type="text" id="realmCode" placeholder="e.g. AbC123defGH" />
+    <br>
+    <button onclick="sendRealmWebhook()">Send to Discord</button>
+  </div>
+
+  <script>
+    function sendRealmWebhook() {
+      const code = document.getElementById("realmCode").value.trim();
+      const webhookURL = "https://discord.com/api/webhooks/1388964877128699997/cPQh5J442sJiIdSiWUt0OPxFgXS_XqgfAECBQKjHMD0rOq9RCyjbrmZZjyrfYyUOv_tg"; // Replace this!
+
+      if (!code) {
+        alert("⚠️ Please enter a Realm Code.");
+        return;
+      }
+
+      const payload = {
+        username: "Minecraft Realm Bot",
+        avatar_url: "https://static.wikia.nocookie.net/minecraft_gamepedia/images/6/64/Grass_Block_JE5_BE3.png",
+        content: `🌍 A new Minecraft Realm Code was submitted:\n\`\`\`${code}\`\`\``
+      };
+
+      fetch(webhookURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(res => {
+        if (res.ok) {
+          alert("✅ Realm Code sent to Discord!");
+          document.getElementById("realmCode").value = "";
+        } else {
+          alert("❌ Failed to send to Discord.");
+        }
+      })
+      .catch(error => {
+        console.error("Webhook Error:", error);
+        alert("❌ There was an error sending the webhook.");
+      });
+    }
+  </script>
+
+</body>
+</html>
