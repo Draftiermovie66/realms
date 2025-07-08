@@ -3,72 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Realm Code's</title>
+  <title>Realm Codes</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #2c2f33;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #1e1f21, #2c2f33);
       color: #ffffff;
+      margin: 0;
       padding: 2rem;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     h1 {
-      color: #ffffff;
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
 
     .container {
-      background: #23272a;
+      background-color: #23272a;
       padding: 2rem;
-      border-radius: 12px;
-      display: inline-block;
-      margin-top: 2rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      max-width: 500px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      max-width: 600px;
       width: 100%;
+      text-align: center;
     }
 
     ul {
-      list-style-type: none;
+      list-style: none;
       padding: 0;
-      margin-top: 1rem;
-      margin-bottom: 2rem;
+      margin: 1.5rem 0;
       text-align: left;
     }
 
     li {
-      padding: 0.75rem;
-      border-bottom: 1px solid #444;
-    }
-
-    li:last-child {
-      border-bottom: none;
-    }
-
-    input[type="text"] {
       padding: 0.8rem;
-      width: 90%;
-      max-width: 300px;
-      font-size: 1rem;
-      border: none;
+      background: #2c2f33;
       border-radius: 8px;
-      margin: 1rem 0;
-      outline: none;
+      margin-bottom: 0.6rem;
+      border-left: 5px solid #7289da;
     }
 
-    button {
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      background-color: #7289da;
-      color: white;
+    iframe {
+      width: 100%;
+      height: 600px;
       border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
+      border-radius: 12px;
+      margin-top: 2rem;
     }
 
-    button:hover {
-      background-color: #5b6eae;
+    @media (max-width: 600px) {
+      iframe {
+        height: 700px;
+      }
     }
   </style>
 </head>
@@ -78,53 +69,18 @@
     <h1>📋 Minecraft Realms</h1>
 
     <ul>
-      <li>1. 🏛️ Ruins SMP — `gJhFT-zYcewZv4Y`</li>
-      <li>2. 🌌 VORTEX SKYGEN — `ch8xRN28yhavgxE`</li>
+      <li>1. 🏛️ Ruins SMP — <code>gJhFT-zYcewZv4Y</code></li>
+      <li>2. 🌌 VORTEX SKYGEN — <code>ch8xRN28yhavgxE</code></li>
     </ul>
 
-    <p>Enter your Minecraft Realm Code: In Rework</p>
-    <input type="text" id="realmCode" placeholder="e.g. AbC123defGH In Rework" />
-    <br>
-    <button onclick="sendRealmWebhook()">Send to Discord</button>
+    <h2>Submit Your Realm Code Below</h2>
+
+    <!-- 🔻 REPLACE this iframe with your own Google Form embed -->
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSddIuhkNztu1d32zHFDVLz9Ii9C53LsK2H73ij4AxBIcA_8BA/viewform?usp=header" 
+      loading="lazy">Loading…</iframe>
+    <!-- 🔺 END GOOGLE FORM EMBED -->
+
   </div>
-
-  <script>
-    function sendRealmWebhook() {
-      const code = document.getElementById("realmCode").value.trim();
-      const webhookURL = "In Rework"; // Your webhook
-
-      if (!code) {
-        alert("⚠️ Please enter a Realm Code.");
-        return;
-      }
-
-      const payload = {
-        username: "Minecraft Realm Bot",
-        avatar_url: "https://static.wikia.nocookie.net/minecraft_gamepedia/images/6/64/Grass_Block_JE5_BE3.png",
-        content: `🌍 A new Minecraft Realm Code was submitted:\n\`\`\`${code}\`\`\``
-      };
-
-      fetch(webhookURL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      })
-      .then(res => {
-        if (res.ok) {
-          alert("✅ Realm Code sent to Discord!");
-          document.getElementById("realmCode").value = "";
-        } else {
-          alert("❌ Failed to send to Discord.");
-        }
-      })
-      .catch(error => {
-        console.error("Webhook Error:", error);
-        alert("❌ There was an error sending the webhook.");
-      });
-    }
-  </script>
 
 </body>
 </html>
